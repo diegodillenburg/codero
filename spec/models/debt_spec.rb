@@ -2,8 +2,11 @@ require 'spec_helper'
 
 describe Debt do
 
-	it { should respond_to(:user_id) }
-	it { should respond_to(:value) }
+	it { should validate_presence_of(:debtor_id)}
+	it { should validate_presence_of(:value) }
 
-	it { should be_valid }
+	it { should belong_to(:user) }
+	it { should belong_to(:billing) }
+	
+	# it { should be_valid }
 end

@@ -1,0 +1,38 @@
+<div class="container">
+	<h1><%= @billing.name %> Bill</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Value</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+		<tbody>
+				<tr>
+					<td><%= @billing.name %></td>
+					<td><%= @billing.description %></td>
+					<td><%= @billing.value %></td>
+					<td><%= @billing.status %></td>
+				</tr>
+				<tr>
+				<th colspan="4"><center>Debtors</center></th>				
+				</tr>
+				<tr>
+					<th colspan="2"><center>Name</center></th>
+					<th>Value</th>
+					<th>Status</th>
+				</tr>
+				<%= @billing.debts.each do |debt| %>
+					<% @debtor = debt.debtor_id %>
+					<% @debtor = User.find_by(id: @debtor) %>
+					<tr>
+						<td colspan="2"><center><%= @debtor.name %></center></td>
+						<td><%= debt.value %></td>
+						<td><%= debt.status %></td>
+					</tr>
+				<% end %>
+		</tbody>
+</table>
+</div>

@@ -10,7 +10,12 @@ FactoryGirl.define do
 		sequence(:name) { |n| "Billing #{n}" }
 		description "Just a billing"
 		value 500
+		status false	
+	end
+
+	factory :debt do
+		debtor_id 2
+		value 250
 		status false
-		user
 	end
 end

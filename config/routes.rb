@@ -3,12 +3,16 @@ Codero::Application.routes.draw do
   resources :dashboard, only: :index
   resources :billings
   resources :debts
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'dashboard#index'
+  authenticated :user do
+    root :to => 'dashboard#index', :as => :authenticated_root
+  end
+
+  root :to => redirect('/users/sign_in')
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
 	def index
-		@user = current_user
+		@billings = current_user.billings
 	end
 end

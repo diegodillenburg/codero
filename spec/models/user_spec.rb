@@ -9,24 +9,18 @@ describe User do
 	it { should respond_to(:email) }
 	it { should respond_to(:password) }
 	it { should respond_to(:password_confirmation) }
-	it { should respond_to(:billings) }
+
+	it { should have_many(:billings) }
+	it { should have_many(:debts) }
 
 	it { should be_valid }
 
-	describe "when name is not present" do
-		before { @user.name = "" }
-		it { should_not be_valid }
-	end
+	
+	it { should validate_presence_of(:name) }
+	it { should ensure_length_of(:name).is_at_most(32) }
 
-	describe "when name is too long" do
-		before { @user.name = "a" * 33 }
-		it { should_not be_valid }
-	end
-
-	describe "when email is not present" do
-		before { @user.email = "" }
-		it { should_not be_valid }
-	end
+	it { should validate_presence_of(:email) }
+	it { should validate_uniqueness_of(:email) }
 
 	describe "when email format is invalid" do
 		it "should be invalid" do
@@ -39,21 +33,9 @@ describe User do
 		end
 	end
 
-	describe "when email address is already taken" do
-		before do
-			@user = FactoryGirl.build(:user)
-			user_with_same_email = @user.dup
-			user_with_same_email.save
-		end
-
-		it { should_not be_valid }
-	end
-
-	describe "when password is not present" do
-		before { @user.password = "" }
-		it { should_not be_valid }
-	end
-
+	it { should validate_presence_of(:password) }
+	it { should ensure_length_of(:password).is_at_least(8) }
+	# it { should validate_presence_of(:password_confirmation) }
 	describe "when password_confirmation is not present" do
 		before { @user.password_confirmation = "" }
 		it { should_not be_valid }
@@ -61,11 +43,6 @@ describe User do
 
 	describe "when password doesn't match confirmation" do
 		before { @user.password_confirmation = "abcdefghijkl123" }
-		it { should_not be_valid }
-	end
-
-	describe "when password is too short" do
-		before { @user.password = @user.password_confirmation = "a" * 5 }
 		it { should_not be_valid }
 	end
 end

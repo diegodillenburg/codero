@@ -1,0 +1,20 @@
+
+A **user has_many billings** as a **creditor(creditor_id)**
+A **user has_many debts** as a **debtor(debtor_id)**
+A **billing has_many debts**
+A **debt belongs_to a billing**
+A **debt belongs_to a user**
+
+Class User < ActiveRecord::Base
+has_many :billings, foreign_key: "creditor_id", dependent: :destroy
+end
+
+Class Billing < ActiveRecord::Base
+belongs_to :creditor, class_name: "User"
+has_many :debts, dependent: :destroy
+end
+
+Class Debt < ActiveRecord::Base
+belongs_to :billing
+belongs_to :user
+end

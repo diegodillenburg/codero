@@ -1,5 +1,7 @@
 class Debt < ActiveRecord::Base
 	belongs_to :billing
-	has_one :user, foreign_key: "debtor_id"
+	belongs_to :user, foreign_key: "debtor_id"
 	
+	validates :debtor_id, presence: true
+	validates :value, presence: true
 end
