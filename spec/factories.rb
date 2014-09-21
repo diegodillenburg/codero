@@ -5,4 +5,12 @@ FactoryGirl.define do
 		password "foobar123"
 		password_confirmation "foobar123"
 	end
+
+	factory :billing do
+		sequence(:name) { |n| "Billing #{n}" }
+		description "Just a billing"
+		value 500
+		status false
+		user
+	end
 end
