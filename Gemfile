@@ -8,6 +8,7 @@ group :development, :test do
 	gem 'sqlite3', '1.3.8'
 	gem 'rspec-rails', '2.13.1'
 	gem 'guard-rspec', '2.5.0'
+	gem 'libnotify', '0.8.0'
 end
 
 group :test do
@@ -27,7 +28,6 @@ gem 'jquery-rails', '3.0.4'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 gem 'therubyracer', platforms: :ruby
-gem 'libnotify', '0.8.0'
 gem 'devise'
 gem 'faker'
 
