@@ -1,15 +1,22 @@
 <div class="fields">
-	<p>
-		<%= f.label :debtor_id %>
-		<%= f.text_field :debtor_id %>
-	</p>
-	<p>
-		<%= f.label :value %>
-		<%= f.text_field :value %>
-	</p>
-	<p>
-		<%= f.label "Already paid?" %>
-		<%= f.check_box :status %>
-	</p>
-	<%= link_to_remove_fields "remove", f %>
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2 debt-fields-form">
+			<center>
+				<span>
+					<%= f.collection_select(:debtor_id, User.all, :id, :name, :prompt => "Select debtor") %>
+				</span>
+				<span>
+					<%= f.text_field :value, placeholder: :value.capitalize %>
+				</span>
+				<span class="debt_is_paid">
+					<%= f.label "Already paid?" %>
+					<%= f.check_box :status %>
+				</span>
+				<span class="remove_link">
+					|
+					<%= link_to_remove_fields "remove", f %>
+				</span>
+			</center>
+		</div>
+	</div>
 </div>

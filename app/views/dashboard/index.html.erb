@@ -1,13 +1,36 @@
 <div class="container">
 	<div class="row">
-		<a href="<%= new_billing_path %>">
-			<button class="btn btn-primary btn-large">New Billing</button>
-		</a>
-		<a href="<%= billings_path(current_user) %>">
-			<button class="btn btn-primary btn-large">My Billings</button>
-		</a>
-		<a href="#">
-			<button class="btn btn-primary btn-large">My Debts</button>
-		</a>
+		<div class="col-lg-8 col-lg-offset-2">
+			<a href="<%= new_billing_path %>">
+				<button class="btn btn-primary btn-large">New Billing</button>
+			</a>
+			<a href="<%= billings_path(current_user) %>">
+				<button class="btn btn-primary btn-large">My Billings</button>
+			</a>
+			<a href="#">
+				<button class="btn btn-primary btn-large">My Debts</button>
+			</a>
+		</div>
 	</div>
+
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2">
+			<table class="table">
+				<thead>
+					<tr>
+					<th colspan="5"><center><strong>Last Bills</strong></center></th>
+					</tr>
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Value</th>
+						<th>Status</th>
+						<th></th>
+					</tr>
+				</thead>
+				<%= render 'shared/billings' %>
+			</table>
+		</div>
+	</div>
+
 </div>

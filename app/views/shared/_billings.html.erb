@@ -1,0 +1,13 @@
+<% @billings.each do |billing| %>
+		<tr>
+			<td><%= billing.name %></td>
+			<td><%= billing.description %></td>
+			<td><%= billing.value %></td>
+			<td><%= billing.status %></td>
+			<td>
+				<a href="<%= billing_path(billing) %>">
+					<button class="btn btn-primary btn-small">+Info</button>
+				</a>
+			</td>
+		</tr>
+<% end %>

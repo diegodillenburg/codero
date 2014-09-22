@@ -1,5 +1,12 @@
 <div class="container">
 	<h1><%= @billing.name %> Bill</h1>
+	<a href="<%= edit_billing_path(@billing) %>">
+		<button class="btn btn-primary btn-large">Edit</button>
+	</a>
+	<% if current_user.id == @billing.creditor_id %>
+		| <%= link_to "delete", @billing, method: :delete,
+														data: { confirm: "You sure?" } %>
+	<% end %>
 	<table class="table">
 		<thead>
 			<tr>

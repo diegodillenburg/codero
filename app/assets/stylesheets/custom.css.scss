@@ -1,1 +1,62 @@
 @import "bootstrap";
+
+/* login form */
+
+#login-button input[type=submit] {
+	padding:5px 15px; background:#ccc; border:0 none;
+	cursor:pointer;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	width: 100%;
+}
+
+.login-form input[type=email] {
+	width: 100%;
+}
+
+.login-form input[type=password] {
+	width: 100%; 
+}
+
+/* new billing form */
+
+.billing-form #billing_name {
+	width: 24%;
+	display: inline;
+}
+
+.billing-form #billing_description {
+	width: 50%;
+	display: inline;
+}
+
+.billing-form #billing_value {
+	width: 8%;
+	display: inline;
+}
+
+.billing-form #billing_is_paid {
+	width: 16%;
+}
+
+/* debt fields form */
+
+.debt-fields-form select {
+	width: 36%;
+	display: inline;
+}
+
+.debt-fields-form input[type=text] {
+	width: 10%;
+	display: inline;
+}
+
+.debt-fields-form .debt_is_paid {
+	width: 16%;
+	display: inline;
+}
+
+.debt-fields-form .remove_link {
+	width: 16%;
+	display: inline;
+}
