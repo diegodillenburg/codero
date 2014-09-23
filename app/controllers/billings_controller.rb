@@ -1,4 +1,5 @@
 class BillingsController < ApplicationController
+	include ApplicationHelper
 
 	def index
 		@billings = current_user.billings
@@ -19,7 +20,7 @@ class BillingsController < ApplicationController
 	end
 
 	def show
-		@billing = current_user.billings.find(params[:id])
+		@billing = Billing.find(params[:id])
 	end
 
 	def edit
@@ -28,8 +29,8 @@ class BillingsController < ApplicationController
 
 	def update
 	  @billing = Billing.find(params[:id])
-    if @billing.update_attributes(params[billing_params])
-      flash[:success] = "Billing updated"
+    if @billing.update_attributes(billing_params)
+      flash[:notice] = "Billing updated"
       redirect_to billing_path(@billing)
     else
       render 'edit'
@@ -42,6 +43,18 @@ class BillingsController < ApplicationController
     redirect_to billings_path
   end
 
+
+	def link_to_remove_fields(name, f)
+    f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
+  end
+  
+  def link_to_add_fields(name, f, association)
+    new_object = f.object.class.reflect_on_association(association).klass.new
+    fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
+      render(association.to_s.singularize + "_fields", :f => builder)
+    end
+    link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
+  end
 
 	private
 		def billing_params

@@ -1,0 +1,15 @@
+<% @debts.each do |debt| %>
+	<% creditor = User.find_by(id: debt.billing.creditor_id) %>
+	<% billing = debt.billing %>
+		<tr>
+			<td><%= debt.billing.name %></td>
+			<td><%= creditor.name %></td>
+			<td><%= debt.value %></td>
+			<td><%= debt.status %></td>
+			<td>
+				<a href="<%= billing_path(billing) %>">
+					<button class="btn btn-primary btn-small">+Info</button>
+				</a>
+			</td>
+		</tr>
+<% end %>

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	has_many :billings, foreign_key: "creditor_id", dependent: :destroy
 	has_many :debts, foreign_key: "debtor_id", dependent: :destroy
+	
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

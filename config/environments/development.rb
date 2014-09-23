@@ -28,4 +28,7 @@ Codero::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # In case of unpermitted parameters in the controller raise error.
+  #config.action_controller.action_on_unpermitted_parameters = :raise
 end

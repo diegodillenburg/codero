@@ -1,7 +1,7 @@
 class Billing < ActiveRecord::Base
 	belongs_to :user, foreign_key: "creditor_id"
 	has_many :debts, dependent: :destroy
-	accepts_nested_attributes_for :debts
+	accepts_nested_attributes_for :debts, allow_destroy: true
 	default_scope -> { order('created_at DESC') }
 
 	validates :name, presence: true, length: { maximum: 32 }

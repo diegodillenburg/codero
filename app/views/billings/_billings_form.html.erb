@@ -1,7 +1,7 @@
+<%= form_for @billing do |f| %>
 <div class="row">
 	<div class="col-lg-8 col-lg-offset-2 billing-form">
 		<center>
-			<%= form_for @billing do |f| %>
 				<span>
 				<%= f.text_field :name, placeholder: :name.capitalize %>
 				</span>
@@ -18,9 +18,10 @@
 			</center>
 		</div>
 </div>
-		<%= f.fields_for :debts do |builder | %>
-			<%= render "debt_fields", :f => builder %>
-		<% end %>
+		
+	<%= f.fields_for :debts do |builder| %>
+		<%= render "debt_fields", :f => builder %>
+	<% end %>
 	<div class="row">
 		<div class="col-lg-8 col-lg-offset-2 billing-form">
 			<p class="pull-right"><%= link_to_add_fields "Add Debtor", f, :debts %></p>
@@ -31,4 +32,4 @@
 			<p class="pull-right"><%= f.submit %></p>
 			</div>
 	</div>
-	<% end %>
+<% end %>
