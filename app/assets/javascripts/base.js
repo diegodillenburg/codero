@@ -20,7 +20,8 @@ $(function () {
     });
 
 $(function () {
-    $('.debt-checkbox').on('click', function () {
+    // $('.debt-checkbox').on('click', function () {
+    $(document).on("click", ".debt-checkbox",  function () {
 
         var list = $(".debt-checkbox").map(function () {
             return $(this).is(":checked");
