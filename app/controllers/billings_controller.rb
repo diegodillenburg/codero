@@ -59,6 +59,6 @@ class BillingsController < ApplicationController
 	private
 		def billing_params
 			params.require(:billing).permit(:name, :description, :value, :status,
-																		 debts_attributes: [:debtor_id, :value, :_destroy, :status])
+																		 debts_attributes: [:id, :debtor_id, :value, :_destroy, :status])
 		end
 end
