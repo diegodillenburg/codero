@@ -14,7 +14,7 @@ class Billing < ActiveRecord::Base
 	private
 		def must_have_debts
 			if debts.empty? or debts.all? { |debt| debt.marked_for_destruction? }
-				errors.add(:debts, "Must have at least one debt")
+				errors.add(:billing, "must have at least one debt")
 			end
 		end
 
@@ -23,6 +23,6 @@ class Billing < ActiveRecord::Base
 			self.debts.each do |debt|
 				sum += debt.value unless debt.value.blank?
 			end
-			errors.add(:value, "Sum of debts must equal total value") unless sum == self.value
+			errors.add(:value, "sum of debts must equal total value") unless sum == self.value
 		end		
 end
