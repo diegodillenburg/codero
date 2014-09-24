@@ -5,7 +5,12 @@
 			<td><%= debt.billing.name %></td>
 			<td><%= creditor.name %></td>
 			<td><%= debt.value %></td>
-			<td><%= debt.status %></td>
+			<% if debt.status %>
+				<td>Paid</td>
+			<% else %>
+				<td>Not Paid</td>
+			<% end %>
+
 			<td>
 				<a href="<%= billing_path(billing) %>">
 					<button class="btn btn-primary btn-small">+Info</button>

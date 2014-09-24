@@ -1,35 +1,50 @@
 <%= form_for @billing do |f| %>
 <div class="row">
-	<div class="col-lg-8 col-lg-offset-2 billing-form">
-		<center>
-				<span>
-				<%= f.text_field :name, placeholder: :name.capitalize %>
-				</span>
-				<span>
-				<%= f.text_field :description, placeholder: :description.capitalize %>
-				</span>
-				<span>
-				<%= f.text_field :value, placeholder: :value.capitalize %>
-				</span>
-				<span id="billing_is_paid">
-				<%= f.label "Already paid?" %>
-				<%= f.check_box :status %>
-				</span>
-			</center>
+	<div class="col-lg-8 col-lg-offset-2">
+
+		<div class="row form-group">
+			<%= f.text_field :name, placeholder: :name.capitalize, autofocus: true, class: "form-control" %>
 		</div>
+
+		<div class="row form-group">
+			<%= f.text_area :description, placeholder: :description.capitalize,
+																		rows: 3, class: "form-control" %>
+		</div>
+
+		<div class="row ">
+			<div class="col-lg-6">
+				<div class="form-group padding-right">
+					<%=	f.text_field :value, placeholder: :value.capitalize, class: "form-control" %>
+				</div>
+			</div>
+		
+			<div class="col-lg-6">
+				<div class="form-group padding-left">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<%= f.check_box :status, class: "billing-checkbox" %>
+						</span>
+							<%= f.label "Already paid?", class: "form-control" %>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
 </div>
 		
 	<%= f.fields_for :debts do |builder| %>
 		<%= render "debt_fields", :f => builder %>
 	<% end %>
 	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 billing-form">
-			<p class="pull-right"><%= link_to_add_fields "Add Debtor", f, :debts %></p>
+		<div class="col-lg-8 col-lg-offset-2">
+			<button class="btn btn-primary btn-block"><%= link_to_add_fields "Add Debtor", f, :debts %>
+			</button>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 billing-form">
-			<p class="pull-right"><%= f.submit %></p>
+		<div class="col-lg-8 col-lg-offset-2">
+			<%= f.submit class: "btn btn-primary btn-block" %>
 			</div>
 	</div>
 <% end %>

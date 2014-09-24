@@ -18,45 +18,31 @@
 	width: 100%; 
 }
 
-/* new billing form */
-
-.billing-form #billing_name {
-	width: 24%;
-	display: inline;
+.form-group {
+	margin-bottom: 6px;
 }
 
-.billing-form #billing_description {
-	width: 50%;
-	display: inline;
+.row .col-lg-6 {
+	padding: 0;
 }
 
-.billing-form #billing_value {
-	width: 8%;
-	display: inline;
+.row .col-lg-8 {
+	padding-left: 0;
+	padding-right: 0;
+	margin-bottom: 6px;
 }
 
-.billing-form #billing_is_paid {
-	width: 16%;
+.padding-left {
+	padding: 0 0 0 3px !important;
 }
 
-/* debt fields form */
-
-.debt-f-form select {
-	width: 36%;
-	display: inline;
+.padding-right {
+	padding-right: 0 3px 0 0 !important;
 }
 
-.debt-f-form input[type=text] {
-	width: 10%;
-	display: inline;
-}
-
-.debt-f-form .debt_is_paid {
-	width: 16%;
-	display: inline;
-}
-
-.debt-f-form .remove_link {
-	width: 16%;
-	display: inline;
+.btn-block a {
+	color: #ffffff;
+	text-decoration: none;
+	width: 100%;
+	display: block;
 }

@@ -3,7 +3,11 @@
 			<td><%= billing.name %></td>
 			<td><%= billing.description %></td>
 			<td><%= billing.value %></td>
-			<td><%= billing.status %></td>
+			<% if billing.status %>
+				<td>Paid</td>
+			<% else %>
+				<td>Not Paid</td>
+			<% end %>
 			<td>
 				<a href="<%= billing_path(billing) %>">
 					<button class="btn btn-primary btn-small">+Info</button>

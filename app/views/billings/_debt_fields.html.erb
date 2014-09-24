@@ -1,22 +1,37 @@
 <div class="fields">
 	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 debt-fields-form">
-			<center>
-				<span>
-					<%= f.collection_select(:debtor_id, User.all, :id, :name, :prompt => "Select debtor") %>
-				</span>
-				<span>
-					<%= f.text_field :value, placeholder: :value.capitalize %>
-				</span>
-				<span class="debt_is_paid">
-					<%= f.label "Already paid?" %>
-					<%= f.check_box :status %>
-				</span>
-				<span class="remove_link">
-					|
-					<%= link_to_remove_fields "remove", f %>
-				</span>
-			</center>
+		<div class="col-lg-8 col-lg-offset-2">
+			<div class="row">
+				<div class="form-group">
+					<%= f.collection_select(:debtor_id, User.all, :id, :name, {:prompt => "Select debtor"}, {:class=> 'form-control'}) %>
+					</div>
+			</div>
+			<div class="row ">
+				<div class="col-lg-6">
+					<div class="form-group padding-right">
+						<%=	f.text_field :value, placeholder: :value.capitalize, class: "form-control" %>
+					</div>
+				</div>
+			
+				<div class="col-lg-6">
+					<div class="form-group padding-left">
+						<div class="input-group">
+							<span class="input-group-addon">
+								<%= f.check_box :status, class: "debt-checkbox" %>
+							</span>
+								<%= f.label "Already paid?", class: "form-control" %>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			<div class="row">
+				<div class="form-group">
+					<button class="btn btn-danger btn-block">
+						<%= link_to_remove_fields "Remove", f %>
+					</button>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
